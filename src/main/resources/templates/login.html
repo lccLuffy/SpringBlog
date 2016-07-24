@@ -5,11 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<ul>
-    <li th:each="post : ${posts}">
-        <a href="post/${post.id}"><h1 th:text="${post.title}"></h1></a>
-        <p th:text="${post.content}"></p>
-    </li>
-</ul>
+<form method="post" action="/login">
+    <p><input name="username" type="text"/></p>
+    <p><input name="password" type="password"/></p>
+    <p><input type="submit"/></p>
+</form>
 </body>
 </html>
