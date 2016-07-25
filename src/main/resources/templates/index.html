@@ -7,7 +7,7 @@
 <body>
 <ul>
     <li th:each="post : ${posts}">
-        <a href="post/${post.id}"><h1 th:text="${post.title}"></h1></a>
+        <a th:href="@{/post/{id}(id = ${post.id})}"><h1 th:text="${post.title}"></h1></a>
         <p th:text="${post.content}"></p>
     </li>
 </ul>

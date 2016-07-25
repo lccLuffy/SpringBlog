@@ -33,9 +33,9 @@ public class HomeController extends BaseController {
         return "login";
     }
 
-    @RequestMapping(value = "login", method = RequestMethod.POST)
-    public String doLogin(@RequestParam("username") String username, @RequestParam("password") String password) {
-        System.out.println(username + password);
+    @RequestMapping(value = "authenticate", method = RequestMethod.POST)
+    public String authenticate(/*@RequestParam("username") String username, @RequestParam("password") String password*/) {
+        logger.info("username + password");
         return "redirect:/";
     }
 
