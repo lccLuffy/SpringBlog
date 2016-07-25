@@ -1,10 +1,13 @@
 package com.lcc.blog.controller;
 
 import com.lcc.blog.model.Post;
+import com.lcc.blog.service.BlogUserDetails;
 import com.lcc.blog.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +27,12 @@ public class HomeController extends BaseController {
     public String index(Model model, Pageable pageable) {
         Page<Post> posts = postService.getAllPosts(pageable);
         model.addAttribute("posts", posts);
+
+        Object s = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (s instanceof BlogUserDetails) {
+            logger.info(((BlogUserDetails) s).getUsername() + ((BlogUserDetails) s).getId());
+        }
+
         return "index";
     }
 
@@ -33,7 +42,7 @@ public class HomeController extends BaseController {
         return "login";
     }
 
-    @RequestMapping(value = "authenticate", method = RequestMethod.POST)
+    @RequestMapping(value = "login", method = RequestMethod.POST)
     public String authenticate(/*@RequestParam("username") String username, @RequestParam("password") String password*/) {
         logger.info("username + password");
         return "redirect:/";
