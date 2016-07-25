@@ -1,14 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>lcc_luffy blog</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-</head>
+<div th:replace="header::head"></div>
 <body>
-<form method="post" action="/login">
-    <p><input name="username" type="text"/></p>
-    <p><input name="password" type="password"/></p>
-    <p><input type="submit"/></p>
-</form>
+<div th:replace="header::nav"></div>
+<div class="container">
+    <form method="post" action="/login">
+        <p><input name="username" type="text"/></p>
+        <p><input name="password" type="password"/></p>
+        <p><input type="submit"/></p>
+    </form>
+</div>
 </body>
 </html>
