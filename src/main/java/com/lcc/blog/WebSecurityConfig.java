@@ -2,8 +2,10 @@ package com.lcc.blog;
 
 import com.lcc.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonJsonParser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,7 +36,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .anyRequest()
+                /*.antMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -43,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error=1")
                 .loginProcessingUrl("/login")
                 .and()
-                .logout()
+                .logout()*/
                 .permitAll();
     }
 

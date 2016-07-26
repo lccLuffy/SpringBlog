@@ -27,7 +27,6 @@ public class HomeController extends BaseController {
     public String index(Model model, Pageable pageable) {
         Page<Post> posts = postService.getAllPosts(pageable);
         model.addAttribute("posts", posts);
-
         Object s = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (s instanceof BlogUserDetails) {
             logger.info(((BlogUserDetails) s).getUsername() + ((BlogUserDetails) s).getId());
