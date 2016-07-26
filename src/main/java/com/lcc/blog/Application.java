@@ -5,6 +5,7 @@ import com.lcc.blog.model.User;
 import com.lcc.blog.repository.PostRepository;
 import com.lcc.blog.repository.UserRepository;
 import com.lcc.blog.service.UserService;
+import freemarker.template.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

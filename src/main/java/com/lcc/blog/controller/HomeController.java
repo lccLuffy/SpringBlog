@@ -47,4 +47,14 @@ public class HomeController extends BaseController {
         return "redirect:/";
     }
 
+    @RequestMapping(value = "register", method = RequestMethod.GET)
+    public String register() {
+
+        return "register";
+    }
+
+    @RequestMapping(value = "register", method = RequestMethod.POST)
+    public String doRegister() {
+        return "redirect:/";
+    }
 }
