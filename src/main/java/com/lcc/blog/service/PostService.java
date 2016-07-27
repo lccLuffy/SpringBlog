@@ -1,6 +1,7 @@
 package com.lcc.blog.service;
 
 import com.lcc.blog.model.Post;
+import com.lcc.blog.model.form.PostForm;
 import com.lcc.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,5 +22,14 @@ public class PostService {
 
     public Post getPost(Long id) {
         return postRepository.findOne(id);
+    }
+
+    public void createPost(PostForm postForm) {
+        Post post = new Post();
+        post.setTitle(postForm.getTitle());
+        post.setContent(postForm.getContent());
+        post.setHtmlContent(postForm.getHtmlContent());
+        post.setPostStatus(postForm.getPostStatus());
+        postRepository.save(post);
     }
 }

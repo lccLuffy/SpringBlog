@@ -25,6 +25,7 @@
             <div class="collapse navbar-collapse" id="blog-navbar">
                 <ul class="nav navbar-nav">
                     <li><a href="/">Blog</a></li>
+                    <li><a href="post">create</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/login">登陆</a></li>

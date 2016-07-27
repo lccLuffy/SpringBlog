@@ -2,9 +2,6 @@
 <@app.app>
 <div class="row">
     <div class="col-lg-6">
-        <#if error??>
-            <h1>error</h1>
-        </#if>
         <form class="form-horizontal" action="/login" method="post">
             <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">用户名</label>
