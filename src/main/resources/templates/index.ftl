@@ -1,5 +1,6 @@
 <#import "layout/app.ftl" as app>
 <@app.app>
+<h2>${io}</h2>
 <ul>
     <#list posts.content as post>
         <li>

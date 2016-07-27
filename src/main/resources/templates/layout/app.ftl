@@ -14,7 +14,7 @@
         <div class="container-fluid">
             <a class="navbar-brand" href="/">lcc_luffy</a>
             <ul class="nav navbar-nav">
-                <li><a href="/">Link</a></li>
+                <li><a href="/">Blog</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="/login">登陆</a></li>

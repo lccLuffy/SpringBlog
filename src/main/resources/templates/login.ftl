@@ -2,6 +2,9 @@
 <@app.app>
 <div class="row">
     <div class="col-lg-6">
+        <#if error??>
+            <h1>error</h1>
+        </#if>
         <form class="form-horizontal" action="/login" method="post">
             <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">用户名</label>
@@ -24,6 +27,8 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="submit" class="btn btn-default">登录</button>
