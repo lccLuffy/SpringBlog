@@ -1,25 +1,16 @@
 package com.lcc.blog;
 
 import com.lcc.blog.service.UserService;
+import com.lcc.blog.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JsonJsonParser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.security.access.intercept.InterceptorStatusToken;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
-import org.springframework.security.web.csrf.CsrfFilter;
-import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
-import org.springframework.web.servlet.theme.ThemeChangeInterceptor;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by lcc_luffy on 2016/7/24.
@@ -29,7 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public UserService userService() {
-        return new UserService();
+        return new UserServiceImpl();
     }
 
     @Bean

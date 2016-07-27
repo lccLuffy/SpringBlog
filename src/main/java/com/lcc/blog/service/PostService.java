@@ -21,6 +21,5 @@ public class PostService {
 
     public Post getPost(Long id) {
         return postRepository.findOne(id);
-
     }
 }
