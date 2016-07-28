@@ -22,7 +22,7 @@ public class Post extends BaseModel{
     @Type(type = "text")
     private String htmlContent;
 
-    @Column(nullable = false)
+    @Column(nullable =false)
     @Enumerated(EnumType.STRING)
     private PostStatus postStatus = PostStatus.PUBLISHED;
 
