@@ -5,7 +5,9 @@ import com.lcc.blog.model.form.PostForm;
 import com.lcc.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,7 +19,13 @@ public class PostService {
     private PostRepository postRepository;
 
     public Page<Post> getAllPosts(Pageable pageable) {
-        return postRepository.findAll(pageable);
+        PageRequest pageRequest = new PageRequest(
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                Sort.Direction.DESC,
+                "updatedAt"
+        );
+        return postRepository.findAll(pageRequest);
     }
 
     public Post getPost(Long id) {
