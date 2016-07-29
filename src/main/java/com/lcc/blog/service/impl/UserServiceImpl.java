@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
         System.out.println("loadUserByUsername:" + s);
         User user = userRepository.findByUsername(s);
         if (user == null) {
-            System.out.println(s + "not found,have you register?");
+            System.out.println(s + " not found,have you register?");
             throw new UsernameNotFoundException(s + " not found,have you register?");
         }
         return new BlogUserDetails(user.getId(), user.getUsername(), user.getPassword(),
