@@ -45,6 +45,7 @@ public class UserForm {
     public void setPassword_confirm(String password_confirm) {
         this.password_confirm = password_confirm;
     }
+
     public String getEmail() {
         return email;
     }
@@ -52,6 +53,7 @@ public class UserForm {
     public void setEmail(String email) {
         this.email = email;
     }
+
     @Override
     public String toString() {
         return "UserForm{" +
