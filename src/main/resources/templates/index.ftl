@@ -9,14 +9,12 @@
     </#list>
 </ul>
 <nav>
-    <nav>
-        <ul class="pager">
-            <li class="previous ${hasPrev?then("","disabled")}"><a href="?page=${prev}"><span
-                    aria-hidden="true">&larr;</span> Newer</a>
-            </li>
-            <li class="next"><a href="?page=${next}">Older <span aria-hidden="true">&rarr;</span></a>
-            </li>
-        </ul>
-    </nav>
+    <ul class="pager">
+        <li class="previous ${hasPrev?then("","disabled")}"><a href="?page=${prev}"><span
+                aria-hidden="true">&larr;</span> Newer</a>
+        </li>
+        <li class="next"><a href="?page=${next}">Older <span aria-hidden="true">&rarr;</span></a>
+        </li>
+    </ul>
 </nav>
 </@app.app>

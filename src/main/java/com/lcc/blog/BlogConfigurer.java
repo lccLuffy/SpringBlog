@@ -1,3 +1,5 @@
+package com.lcc.blog;
+
 import org.springframework.context.annotation.Configuration;
 
 /**

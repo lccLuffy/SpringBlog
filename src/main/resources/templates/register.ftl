@@ -1,9 +1,6 @@
 <#import "layout/app.ftl" as app>
 <@app.app>
 <div class="row">
-    <#if errors?? && errors.fieldErrorCount > 0>
-        <h1>error!!!!!!!!</h1>
-    </#if>
     <div class="col-lg-6">
         <form class="form-horizontal" action="/register" method="post">
             <div class="form-group">
