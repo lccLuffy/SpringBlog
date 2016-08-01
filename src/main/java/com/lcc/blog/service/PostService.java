@@ -50,4 +50,8 @@ public class PostService {
     public void deleteOne(Long id) {
         postRepository.delete(id);
     }
+
+    public void save(Post post) {
+        postRepository.save(post);
+    }
 }

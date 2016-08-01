@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 
 /**
  * Created by lcc_luffy on 2016/7/24.
@@ -30,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http
+        http
                 .authorizeRequests()
                 .antMatchers("/", "/register").permitAll()
                 .anyRequest().authenticated()
@@ -42,13 +43,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .and()
                 .logout()
-                .permitAll();*/
+                .permitAll();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userService())
                 .passwordEncoder(passwordEncoder());
+        SimpleMappingExceptionResolver simpleMappingExceptionResolver;
     }
 
     @Autowired

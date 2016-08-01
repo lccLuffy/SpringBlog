@@ -10,10 +10,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Locale;
@@ -52,21 +52,19 @@ public class HomeController extends BaseController {
     }
 
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public String doRegister(Model model, @Valid UserForm userForm, BindingResult bindingResult) {
-        logger.info(userForm.toString());
+    public String doRegister(Model model, RedirectAttributes redirectAttributes, @Valid UserForm userForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            for (FieldError fieldError : bindingResult.getFieldErrors()) {
-                logger.info(fieldError.toString());
-            }
+            redirectAttributes.addFlashAttribute("message", bindingResult.toString());
             model.addAttribute("userForm", userForm);
-            return "register";
+            return "redirect:/register";
         }
         if (userService.findByUsername(userForm.getUsername()) != null) {
-            System.out.println("user-has-exist");
+            redirectAttributes.addFlashAttribute("message", "用户已存在");
             model.addAttribute("userForm", userForm);
-            return "register";
+            return "redirect:/register";
         }
         userService.createUser(userForm);
+        redirectAttributes.addFlashAttribute("message", "注册成功");
         return "redirect:/";
     }
 

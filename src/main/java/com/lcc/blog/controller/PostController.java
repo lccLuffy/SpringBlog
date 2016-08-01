@@ -1,7 +1,9 @@
 package com.lcc.blog.controller;
 
+import com.lcc.blog.model.Post;
 import com.lcc.blog.model.form.PostForm;
 import com.lcc.blog.service.PostService;
+import org.markdownj.MarkdownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,7 +41,7 @@ public class PostController extends BaseController {
     @RequestMapping(value = "post", method = RequestMethod.POST)
     public String doCreate(@Valid PostForm postForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "post/create";
+            return "redirect:post";
         }
         postService.createPost(postForm);
         return "redirect:/";
@@ -63,9 +65,19 @@ public class PostController extends BaseController {
                 redirectAttributes.addFlashAttribute("message", "文件名要以.md结尾");
                 return "redirect:/uploadFile";
             }
-            String string = new String(file.getBytes());
-            System.out.println(string);
+            System.out.println(file.getName());
+            String md = new String(file.getBytes());
+            MarkdownProcessor markdownProcessor = new MarkdownProcessor();
+            String html = markdownProcessor.markdown(md);
             redirectAttributes.addFlashAttribute("message", "上传成功");
+            String fileName = file.getOriginalFilename();
+
+            Post post = new Post();
+            post.setTitle(fileName.substring(0, fileName.length() - 3));
+            post.setHtmlContent(html);
+            post.setContent(md);
+            postService.save(post);
+
             return "redirect:/";
         } else {
             redirectAttributes.addFlashAttribute("message", "文件为空");

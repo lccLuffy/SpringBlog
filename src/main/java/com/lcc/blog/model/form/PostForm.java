@@ -2,6 +2,7 @@ package com.lcc.blog.model.form;
 
 import com.lcc.blog.model.support.PostStatus;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -9,9 +10,11 @@ import javax.validation.constraints.NotNull;
  */
 public class PostForm {
     @NotNull
+    @Min(1)
     private String title;
 
     @NotNull
+    @Min(1)
     private String content;
 
     private String htmlContent;

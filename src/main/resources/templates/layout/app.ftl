@@ -26,6 +26,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="/">Blog</a></li>
                     <li><a href="post">create</a></li>
+                    <li><a href="/admin">admin</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/login">登陆</a></li>

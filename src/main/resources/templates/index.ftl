@@ -4,7 +4,7 @@
     <#list posts.content as post>
         <li class="list-group-item">
             <h2><a href="post/${post.id}">${post.title}</a></h2>
-            <h4>${post.content}</h4>
+            <h4>${post.htmlContent}</h4>
         </li>
     </#list>
 </ul>
