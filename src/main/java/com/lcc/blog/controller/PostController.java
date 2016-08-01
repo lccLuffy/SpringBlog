@@ -9,8 +9,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 /**
  * Created by lcc_luffy on 2016/7/24.
@@ -21,7 +25,7 @@ public class PostController extends BaseController {
     @Autowired
     private PostService postService;
 
-    @RequestMapping("post/{id}")
+    @RequestMapping(value = "post/{id}", method = RequestMethod.GET)
     public String show(Model model, @PathVariable("id") Long id) {
         model.addAttribute("post", postService.getPost(id));
         return "post/show";
@@ -39,5 +43,33 @@ public class PostController extends BaseController {
         }
         postService.createPost(postForm);
         return "redirect:/";
+    }
+
+    @RequestMapping(value = "post/{id}", method = RequestMethod.DELETE)
+    public String delete(@PathVariable Long id) {
+        postService.deleteOne(id);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
+    public String uploadFile() {
+        return "post/uploadFile";
+    }
+
+    @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
+    public String dpUploadFile(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) throws IOException {
+        if (!file.isEmpty()) {
+            if (!file.getOriginalFilename().endsWith(".md")) {
+                redirectAttributes.addFlashAttribute("message", "文件名要以.md结尾");
+                return "redirect:/uploadFile";
+            }
+            String string = new String(file.getBytes());
+            System.out.println(string);
+            redirectAttributes.addFlashAttribute("message", "上传成功");
+            return "redirect:/";
+        } else {
+            redirectAttributes.addFlashAttribute("message", "文件为空");
+        }
+        return "redirect:/uploadFile";
     }
 }

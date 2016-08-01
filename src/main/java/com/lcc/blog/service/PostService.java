@@ -10,6 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by lcc_luffy on 2016/7/24.
  */
@@ -39,5 +41,13 @@ public class PostService {
         post.setHtmlContent(postForm.getHtmlContent());
         post.setPostStatus(postForm.getPostStatus());
         postRepository.save(post);
+    }
+
+    public List<Post> getAll() {
+        return postRepository.findAll();
+    }
+
+    public void deleteOne(Long id) {
+        postRepository.delete(id);
     }
 }

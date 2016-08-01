@@ -38,7 +38,6 @@ public class HomeController extends BaseController {
         model.addAttribute("prev", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());
         model.addAttribute("hasPrev", pageable.hasPrevious());
-        logger.info(locale.toString() + " local");
         return "index";
     }
 
@@ -69,5 +68,11 @@ public class HomeController extends BaseController {
         }
         userService.createUser(userForm);
         return "redirect:/";
+    }
+
+    @RequestMapping("admin")
+    public String admin(Model model) {
+        model.addAttribute("posts", postService.getAll());
+        return "admin";
     }
 }

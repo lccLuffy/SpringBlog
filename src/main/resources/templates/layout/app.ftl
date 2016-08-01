@@ -38,6 +38,7 @@
     <div class="page-header">
         <h1>lcc_luffy</h1>
     </div>
+    <#include "../partials/error.ftl"/>
     <#nested>
     <footer class="footer">
         <div class="container">
