@@ -4,10 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -25,8 +23,8 @@ public class User extends BaseModel {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-    private List<Post> posts = new ArrayList<Post>();
+    @OneToMany(mappedBy = "user")
+    private List<Article> posts = new ArrayList<Article>();
 
 
     public User(String username, String email, String password) {
@@ -40,11 +38,11 @@ public class User extends BaseModel {
     }
 
 
-    public List<Post> getPosts() {
+    public List<Article> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
+    public void setPosts(List<Article> posts) {
         this.posts = posts;
     }
 

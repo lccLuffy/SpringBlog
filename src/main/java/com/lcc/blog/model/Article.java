@@ -1,7 +1,6 @@
 package com.lcc.blog.model;
 
 import com.lcc.blog.model.support.PostStatus;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 
@@ -9,23 +8,23 @@ import javax.persistence.*;
  * Created by lcc_luffy on 2016/7/23.
  */
 @Entity
-public class Post extends BaseModel{
+public class Article extends BaseModel {
     @ManyToOne
     private User user;
 
     @Column(nullable = false)
     private String title;
 
-    @Type(type="text")
-    private String content;
+    private String author;
 
-    @Type(type = "text")
-    private String htmlContent;
+    private String originUrl;
 
-    @Column(nullable =false)
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private PostStatus postStatus = PostStatus.PUBLISHED;
 
+    @ManyToOne
+    private Category category;
     public User getUser() {
         return user;
     }
@@ -42,20 +41,20 @@ public class Post extends BaseModel{
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getHtmlContent() {
-        return htmlContent;
+    public String getOriginUrl() {
+        return originUrl;
     }
 
-    public void setHtmlContent(String htmlContent) {
-        this.htmlContent = htmlContent;
+    public void setOriginUrl(String originUrl) {
+        this.originUrl = originUrl;
     }
 
     public PostStatus getPostStatus() {
@@ -65,4 +64,12 @@ public class Post extends BaseModel{
     public void setPostStatus(PostStatus postStatus) {
         this.postStatus = postStatus;
     }
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
 }

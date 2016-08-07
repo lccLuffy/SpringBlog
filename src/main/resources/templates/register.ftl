@@ -6,25 +6,29 @@
             <div class="form-group">
                 <label for="username" class="col-sm-2 control-label">用户名</label>
                 <div class="col-sm-10">
-                    <input type="text" name="username" class="form-control" id="username" placeholder="用户名">
+                    <input type="text" value="${userForm.username!""}" name="username" class="form-control"
+                           id="username" placeholder="用户名">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-2 control-label">邮箱</label>
                 <div class="col-sm-10">
-                    <input type="email" name="email" class="form-control" id="email" placeholder="邮箱">
+                    <input type="email" value="${userForm.email!""}" name="email" class="form-control" id="email"
+                           placeholder="邮箱">
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-2 control-label">密码</label>
                 <div class="col-sm-10">
-                    <input type="password" name="password" class="form-control" id="password">
+                    <input type="password" value="${userForm.password!""}" name="password" class="form-control"
+                           id="password">
                 </div>
             </div>
             <div class="form-group">
                 <label for="password_confirm" class="col-sm-2 control-label">确认密码</label>
                 <div class="col-sm-10">
-                    <input type="password" name="password_confirm" class="form-control" id="password_confirm">
+                    <input type="password" value="${userForm.password_confirm!""}" name="password_confirm"
+                           class="form-control" id="password_confirm">
                 </div>
             </div>
             <input type="hidden" name="${_csrf.parameterName}"

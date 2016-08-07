@@ -9,6 +9,8 @@
     <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -20,13 +22,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">lcc_luffy</a>
+                <a class="navbar-brand" href="/">开放&分享</a>
             </div>
             <div class="collapse navbar-collapse" id="blog-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Blog</a></li>
-                    <li><a href="post">create</a></li>
-                    <li><a href="/admin">admin</a></li>
+                    <li><a href="/">博客</a></li>
+                    <li><a href="post">发布</a></li>
+                    <li><a href="/admin">管理员</a></li>
+                    <li><a href="/uploadFile">上传文件</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/login">登陆</a></li>
@@ -35,15 +38,11 @@
             </div>
         </div>
     </nav>
-
-    <div class="page-header">
-        <h1>lcc_luffy</h1>
-    </div>
     <#include "../partials/error.ftl"/>
     <#nested>
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">©2016 lcc_luffy</p>
+            <p class="text-muted text-center">©2016 lcc_luffy</p>
         </div>
     </footer>
     <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>

@@ -1,6 +1,6 @@
 package com.lcc.blog.controller;
 
-import com.lcc.blog.model.Post;
+import com.lcc.blog.model.Article;
 import com.lcc.blog.model.form.UserForm;
 import com.lcc.blog.service.PostService;
 import com.lcc.blog.service.UserService;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
-import java.util.Locale;
 
 /**
  * Created by lcc_luffy on 2016/7/23.
@@ -32,8 +31,8 @@ public class HomeController extends BaseController {
     private UserService userService;
 
     @RequestMapping("")
-    public String index(Locale locale, Model model, Pageable pageable) {
-        Page<Post> posts = postService.getAllPosts(pageable);
+    public String index(Model model, Pageable pageable) {
+        Page<Article> posts = postService.getAllPosts(pageable);
         model.addAttribute("posts", posts);
         model.addAttribute("prev", pageable.previousOrFirst().getPageNumber());
         model.addAttribute("next", pageable.next().getPageNumber());
@@ -55,7 +54,6 @@ public class HomeController extends BaseController {
     public String doRegister(Model model, RedirectAttributes redirectAttributes, @Valid UserForm userForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("message", bindingResult.toString());
-            model.addAttribute("userForm", userForm);
             return "redirect:/register";
         }
         if (userService.findByUsername(userForm.getUsername()) != null) {

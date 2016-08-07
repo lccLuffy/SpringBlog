@@ -1,6 +1,6 @@
 package com.lcc.blog.controller;
 
-import com.lcc.blog.model.Post;
+import com.lcc.blog.model.Article;
 import com.lcc.blog.model.form.PostForm;
 import com.lcc.blog.service.PostService;
 import org.markdownj.MarkdownProcessor;
@@ -72,7 +72,7 @@ public class PostController extends BaseController {
             redirectAttributes.addFlashAttribute("message", "上传成功");
             String fileName = file.getOriginalFilename();
 
-            Post post = new Post();
+            Article post = new Article();
             post.setTitle(fileName.substring(0, fileName.length() - 3));
             post.setHtmlContent(html);
             post.setContent(md);

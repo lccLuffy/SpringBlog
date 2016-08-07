@@ -1,6 +1,6 @@
 package com.lcc.blog.service;
 
-import com.lcc.blog.model.Post;
+import com.lcc.blog.model.Article;
 import com.lcc.blog.model.form.PostForm;
 import com.lcc.blog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class PostService {
     @Autowired
     private PostRepository postRepository;
 
-    public Page<Post> getAllPosts(Pageable pageable) {
+    public Page<Article> getAllPosts(Pageable pageable) {
         PageRequest pageRequest = new PageRequest(
                 pageable.getPageNumber(),
                 pageable.getPageSize(),
@@ -30,12 +30,12 @@ public class PostService {
         return postRepository.findAll(pageRequest);
     }
 
-    public Post getPost(Long id) {
+    public Article getPost(Long id) {
         return postRepository.findOne(id);
     }
 
     public void createPost(PostForm postForm) {
-        Post post = new Post();
+        Article post = new Article();
         post.setTitle(postForm.getTitle());
         post.setContent(postForm.getContent());
         post.setHtmlContent(postForm.getHtmlContent());
@@ -43,7 +43,7 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public List<Post> getAll() {
+    public List<Article> getAll() {
         return postRepository.findAll();
     }
 
@@ -51,7 +51,7 @@ public class PostService {
         postRepository.delete(id);
     }
 
-    public void save(Post post) {
+    public void save(Article post) {
         postRepository.save(post);
     }
 }

@@ -1,7 +1,5 @@
 package com.lcc.blog.model.form;
 
-import org.hibernate.validator.constraints.Email;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -18,7 +16,6 @@ public class UserForm {
     @Size(min = 6, max = 16)
     private String password_confirm;
 
-    @Email
     @NotNull
     private String email;
 
@@ -60,6 +57,7 @@ public class UserForm {
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", password_confirm='" + password_confirm + '\'' +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
