@@ -1,6 +1,7 @@
 package com.lcc.blog.model;
 
-import com.lcc.blog.model.support.PostStatus;
+import com.lcc.blog.model.support.ArticleStatus;
+import com.lcc.blog.model.support.ArticleType;
 
 import javax.persistence.*;
 
@@ -21,55 +22,13 @@ public class Article extends BaseModel {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private PostStatus postStatus = PostStatus.PUBLISHED;
+    private ArticleStatus articleStatus = ArticleStatus.PUBLISHED;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ArticleType articleType = ArticleType.ARTICLE;
 
     @ManyToOne
     private Category category;
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getOriginUrl() {
-        return originUrl;
-    }
-
-    public void setOriginUrl(String originUrl) {
-        this.originUrl = originUrl;
-    }
-
-    public PostStatus getPostStatus() {
-        return postStatus;
-    }
-
-    public void setPostStatus(PostStatus postStatus) {
-        this.postStatus = postStatus;
-    }
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
 }

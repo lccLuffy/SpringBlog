@@ -3,9 +3,9 @@ package com.lcc.blog.model.support;
 /**
  * Created by lcc_luffy on 2016/7/24.
  */
-public enum PostStatus {
-    DRAFT("Draft"),
-    PUBLISHED("Published");
+public enum ArticleType {
+    ARTICLE("Article"),
+    FOLDER("Folder");
     private String name;
 
     public String getName() {
@@ -16,7 +16,7 @@ public enum PostStatus {
         this.name = name;
     }
 
-    PostStatus(String name) {
+    ArticleType(String name) {
         this.name = name;
     }
 

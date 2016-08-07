@@ -14,8 +14,6 @@ public class Category extends BaseModel {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    private List<Folder> folders = new ArrayList<Folder>();
 
     @OneToMany(mappedBy = "category")
     private List<Article> articles = new ArrayList<Article>();

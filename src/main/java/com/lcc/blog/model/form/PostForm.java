@@ -1,6 +1,6 @@
 package com.lcc.blog.model.form;
 
-import com.lcc.blog.model.support.PostStatus;
+import com.lcc.blog.model.support.ArticleStatus;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -19,7 +19,7 @@ public class PostForm {
 
     private String htmlContent;
 
-    private PostStatus postStatus = PostStatus.PUBLISHED;
+    private ArticleStatus postStatus = ArticleStatus.PUBLISHED;
 
     public String getTitle() {
         return title;
@@ -45,11 +45,11 @@ public class PostForm {
         this.htmlContent = htmlContent;
     }
 
-    public PostStatus getPostStatus() {
+    public ArticleStatus getPostStatus() {
         return postStatus;
     }
 
-    public void setPostStatus(PostStatus postStatus) {
+    public void setPostStatus(ArticleStatus postStatus) {
         this.postStatus = postStatus;
     }
 }
