@@ -1,8 +1,4 @@
 <#import "layout/app.ftl" as app>
 <@app.app>
-<ul class="list-group">
-    <a class="list-group-item">
-        《ha
-    </a>
-</ul>
+<h1>Home Page</h1>
 </@app.app>

@@ -9,8 +9,6 @@
     <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -37,7 +35,7 @@
             </div>
         </div>
     </nav>
-    <#include "../partials/error.ftl"/>
+    <#--<#include "../partials/error.ftl"/>-->
     <#nested>
     <footer class="footer">
         <div class="container">

@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by lcc_luffy on 2016/8/7.
  */
 @Controller
-@RequestMapping("category")
+@RequestMapping("/category")
 public class CategoryController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String create() {
+        logger.info("nice category");
         return "category/create";
     }
 }
