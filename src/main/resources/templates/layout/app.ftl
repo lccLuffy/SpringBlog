@@ -26,10 +26,9 @@
             </div>
             <div class="collapse navbar-collapse" id="blog-navbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">博客</a></li>
-                    <li><a href="post">发布</a></li>
+                    <li><a href="/article">发布</a></li>
                     <li><a href="/admin">管理员</a></li>
-                    <li><a href="/uploadFile">上传文件</a></li>
+                    <li><a href="/category">新的分类</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/login">登陆</a></li>

@@ -1,8 +1,7 @@
 package com.lcc.blog.controller;
 
-import com.lcc.blog.model.Article;
 import com.lcc.blog.model.form.PostForm;
-import com.lcc.blog.service.PostService;
+import com.lcc.blog.service.ArticleService;
 import org.markdownj.MarkdownProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,40 +21,41 @@ import java.io.IOException;
  * Created by lcc_luffy on 2016/7/24.
  */
 @Controller
-public class PostController extends BaseController {
+@RequestMapping("article")
+public class ArticleController extends BaseController {
 
     @Autowired
-    private PostService postService;
+    private ArticleService articleService;
 
-    @RequestMapping(value = "post/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String show(Model model, @PathVariable("id") Long id) {
-        model.addAttribute("post", postService.getPost(id));
-        return "post/show";
+        model.addAttribute("post", articleService.getPost(id));
+        return "article/show";
     }
 
-    @RequestMapping(value = "post", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String create() {
-        return "post/create";
+        return "article/create";
     }
 
-    @RequestMapping(value = "post", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public String doCreate(@Valid PostForm postForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "redirect:post";
+            return "redirect:article";
         }
-        postService.createPost(postForm);
+        articleService.createPost(postForm);
         return "redirect:/";
     }
 
-    @RequestMapping(value = "post/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public String delete(@PathVariable Long id) {
-        postService.deleteOne(id);
+        articleService.deleteOne(id);
         return "redirect:/admin";
     }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.GET)
     public String uploadFile() {
-        return "post/uploadFile";
+        return "article/uploadFile";
     }
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
@@ -63,7 +63,7 @@ public class PostController extends BaseController {
         if (!file.isEmpty()) {
             if (!file.getOriginalFilename().endsWith(".md")) {
                 redirectAttributes.addFlashAttribute("message", "文件名要以.md结尾");
-                return "redirect:/uploadFile";
+                return "redirect:uploadFile";
             }
             System.out.println(file.getName());
             String md = new String(file.getBytes());
@@ -72,11 +72,6 @@ public class PostController extends BaseController {
             redirectAttributes.addFlashAttribute("message", "上传成功");
             String fileName = file.getOriginalFilename();
 
-            Article post = new Article();
-            post.setTitle(fileName.substring(0, fileName.length() - 3));
-            post.setHtmlContent(html);
-            post.setContent(md);
-            postService.save(post);
 
             return "redirect:/";
         } else {

@@ -16,7 +16,82 @@ public class Article extends BaseModel {
     @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
+    private String description;
+
     private String author;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getOriginUrl() {
+        return originUrl;
+    }
+
+    public void setOriginUrl(String originUrl) {
+        this.originUrl = originUrl;
+    }
+
+    public ArticleStatus getArticleStatus() {
+        return articleStatus;
+    }
+
+    public void setArticleStatus(ArticleStatus articleStatus) {
+        this.articleStatus = articleStatus;
+    }
+
+    public ArticleType getArticleType() {
+        return articleType;
+    }
+
+    public void setArticleType(ArticleType articleType) {
+        this.articleType = articleType;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Markdown getMarkdown() {
+        return markdown;
+    }
+
+    public void setMarkdown(Markdown markdown) {
+        this.markdown = markdown;
+    }
 
     private String originUrl;
 
@@ -30,5 +105,8 @@ public class Article extends BaseModel {
 
     @ManyToOne
     private Category category;
+
+    @OneToOne
+    private Markdown markdown;
 
 }

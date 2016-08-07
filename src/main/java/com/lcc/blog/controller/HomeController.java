@@ -2,7 +2,7 @@ package com.lcc.blog.controller;
 
 import com.lcc.blog.model.Article;
 import com.lcc.blog.model.form.UserForm;
-import com.lcc.blog.service.PostService;
+import com.lcc.blog.service.ArticleService;
 import com.lcc.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ import javax.validation.Valid;
 public class HomeController extends BaseController {
 
     @Autowired
-    private PostService postService;
+    private ArticleService postService;
 
     @Autowired
     private UserService userService;

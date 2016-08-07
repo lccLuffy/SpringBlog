@@ -1,6 +1,6 @@
 package com.lcc.blog;
 
-import com.lcc.blog.repository.PostRepository;
+import com.lcc.blog.repository.ArticleRepository;
 import com.lcc.blog.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,7 +19,7 @@ public class Application implements CommandLineRunner {
     }
 
     @Autowired
-    PostRepository postRepository;
+    ArticleRepository postRepository;
 
     @Autowired
     UserService userService;

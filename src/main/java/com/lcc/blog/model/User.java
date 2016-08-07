@@ -26,7 +26,6 @@ public class User extends BaseModel {
     @OneToMany(mappedBy = "user")
     private List<Article> posts = new ArrayList<Article>();
 
-
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;

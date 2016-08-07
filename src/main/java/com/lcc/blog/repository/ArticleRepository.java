@@ -11,6 +11,6 @@ import java.util.List;
  * Created by lcc_luffy on 2016/7/23.
  */
 @Repository
-public interface PostRepository extends JpaRepository<Article, Long> {
+public interface ArticleRepository extends JpaRepository<Article, Long> {
     List<Article> findByUser(User user);
 }
