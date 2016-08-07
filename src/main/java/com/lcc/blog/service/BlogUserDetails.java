@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * Created by lcc_luffy on 2016/7/25.
+ * Created by lcc_luffy on 2016/7/25
  */
 public class BlogUserDetails implements UserDetails {
 
